@@ -91,7 +91,7 @@ declare interface ModConfigMenuInterface {
   AddText(
     categoryName: string,
     subcategoryName: string,
-    text: string | () => string,
+    text: string | (() => string),
     color?: string,
   ): void;
 
