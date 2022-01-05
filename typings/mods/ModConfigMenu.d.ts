@@ -2,7 +2,7 @@ declare const ModConfigMenu: ModConfigMenuInterface | undefined;
 
 /** @noSelf */
 declare interface ModConfigMenuInterface {
-  Version: number;
+  Version: int;
   
   AddSetting(
     categoryName: string,
@@ -19,7 +19,7 @@ declare interface ModConfigMenuInterface {
     displayValueProxies: LuaTable<boolean, string>,
     info: string,
     color?: string,
-  );
+  ): void;
 
   AddNumberSetting(
     categoryName: string,
@@ -33,7 +33,7 @@ declare interface ModConfigMenuInterface {
     displayValueProxies: LuaTable<number, string>,
     info: string,
     color?: string,
-  );
+  ): void;
 
   AddScrollSetting(
     categoryName: string,
@@ -43,7 +43,7 @@ declare interface ModConfigMenuInterface {
     displayText: string,
     info: string,
     color?: string,
-  );
+  ): void;
 
   AddKeyboardSetting(
     categoryName: string,
@@ -54,7 +54,7 @@ declare interface ModConfigMenuInterface {
     displayDevice: boolean,
     info: string,
     color?: string,
-  );
+  ): void;
 
   AddControllerSetting(
     categoryName: string,
@@ -65,7 +65,7 @@ declare interface ModConfigMenuInterface {
     displayDevice: boolean,
     info: string,
     color?: string,
-  );
+  ): void;
 
   SimpleAddSetting(
     settingType: ModConfigMenuOptionType,
@@ -82,9 +82,13 @@ declare interface ModConfigMenuInterface {
     info: string,
     color?: string,
     functionName?: string,
-  );
+  ): void;
 
-  RemoveSetting(categoryName: string, subcategoryString: string, settingAttribute: string);
+  RemoveSetting(
+    categoryName: string,
+    subcategoryString: string,
+    settingAttribute: string,
+  ): void;
 
   AddSpace(categoryName: string, subcategoryName: string): void;
 
@@ -100,21 +104,28 @@ declare interface ModConfigMenuInterface {
     subcategoryName: string,
     text: string,
     color?: string,
-  );
+  ): void;
 
   GetCategoryIDByName(categoryName: string): int | undefined;
 
-  UpdateCategory(categoryName: string, categoryData: CategoryData);
+  UpdateCategory(categoryName: string, categoryData: CategoryData): void;
 
-  SetCategoryInfo(categoryName: string, info: string);
+  SetCategoryInfo(categoryName: string, info: string): void;
 
-  RemoveCategory(categoryName: string);
+  RemoveCategory(categoryName: string): void;
 
-  GetSubcategoryIDByName(category: string | number, subcategoryName: string): number;
+  GetSubcategoryIDByName(
+    category: string | number,
+    subcategoryName: string,
+  ): int;
 
-  UpdateSubcategory(categoryName: string, subcategoryName: string, subcategoryData: SubcategoryData);
+  UpdateSubcategory(
+    categoryName: string,
+    subcategoryName: string,
+    subcategoryData: SubcategoryData,
+  ): void;
 
-  RemoveSubcategory(categoryName: string, subcategoryName: string);
+  RemoveSubcategory(categoryName: string, subcategoryName: string): void;
 
   Config: {
     General: {
