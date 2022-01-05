@@ -3,7 +3,7 @@ declare const ModConfigMenu: ModConfigMenuInterface | undefined;
 /** @noSelf */
 declare interface ModConfigMenuInterface {
   Version: int;
-  
+
   AddSetting(
     categoryName: string,
     subcategoryName?: string,
